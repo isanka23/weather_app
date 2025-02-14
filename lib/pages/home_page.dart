@@ -17,13 +17,13 @@ class _HomePageState extends State<HomePage> {
   WeatherModel? _weather;
 
   //method to fetvh the weather
-  void fetchWeather()async{
-    try{
+  void fetchWeather() async {
+    try {
       final weather = await _weatherService.getWeatherFromLocation();
       setState(() {
         _weather = weather;
       });
-    }catch (error){
+    } catch (error) {
       print("Error from weather data : $error");
     }
   }
@@ -34,12 +34,14 @@ class _HomePageState extends State<HomePage> {
     fetchWeather();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
+      ),
+      body: Center(
+        child: Text("weather app"),
       ),
     );
   }
