@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         title: Text("Home Page"),
       ),
       body: Center(
-        child: Text("weather app"),
+        child: Text("weather app2"),
       ),
     );
   }
