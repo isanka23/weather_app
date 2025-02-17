@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/pages/home_page.dart';
+import 'package:weather_app/providers/theme_providers.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProviders(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "weather app",
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: Provider.of<ThemeProviders>(context).getThemeData,
       home: const HomePage(),
     );
   }
